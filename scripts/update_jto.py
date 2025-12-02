@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Update JTO benchmark with complete allocation data."""
+"""Update JTO benchmark with new fields: description, first_candles_1m, sources."""
 
 import sys
 from pathlib import Path
 
-# Add parent to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.storage.json_store import (
@@ -19,7 +18,21 @@ from src.storage.json_store import (
 def main():
     store = BenchmarkStore()
 
-    # Create complete JTO benchmark
+    # First 10 1-minute candles from Bybit (JTO/USDT) - 2023-12-07 starting 16:00 UTC
+    bybit_first_candles = [
+        {"minute": 1, "time": "16:00:00", "open": 0.03, "high": 3.00, "low": 0.03, "close": 3.00},
+        {"minute": 2, "time": "16:01:00", "open": 3.00, "high": 3.10, "low": 3.00, "close": 3.00},
+        {"minute": 3, "time": "16:02:00", "open": 3.00, "high": 3.00, "low": 3.00, "close": 3.00},
+        {"minute": 4, "time": "16:03:00", "open": 3.00, "high": 3.00, "low": 3.00, "close": 3.00},
+        {"minute": 5, "time": "16:04:00", "open": 3.00, "high": 3.00, "low": 3.00, "close": 3.00},
+        {"minute": 6, "time": "16:05:00", "open": 3.00, "high": 10.61, "low": 3.00, "close": 10.00},
+        {"minute": 7, "time": "16:06:00", "open": 10.00, "high": 32.67, "low": 10.00, "close": 28.00},
+        {"minute": 8, "time": "16:07:00", "open": 28.00, "high": 28.65, "low": 9.50, "close": 9.50},
+        {"minute": 9, "time": "16:08:00", "open": 9.50, "high": 11.24, "low": 7.00, "close": 10.68},
+        {"minute": 10, "time": "16:09:00", "open": 10.68, "high": 15.00, "low": 10.00, "close": 14.42},
+    ]
+
+    # Create complete JTO benchmark with new fields
     jto = TokenBenchmark(
         symbol="JTO",
         name="Jito",
@@ -27,6 +40,7 @@ def main():
         blockchain="Solana",
         categories=["Liquid Staking", "MEV Infrastructure", "DeFi"],
         listing_date="2023-12-07",
+        description="Jito is a liquid staking protocol on Solana offering MEV-powered yields through JitoSOL.",
 
         # Supply
         total_supply=1_000_000_000,
@@ -42,7 +56,7 @@ def main():
         fdv_usd=2_035_200_000,
         mcap_usd=234_048_000,
 
-        # CEX Data
+        # CEX Data with first 10 candles
         cex_data=[
             CEXData(
                 exchange="bybit",
@@ -56,6 +70,7 @@ def main():
                 flag="SUSPECT - extreme wicks",
                 vwap_1h=2.1238,
                 median_close_1h=2.0535,
+                first_candles_1m=bybit_first_candles,
             ),
             CEXData(
                 exchange="binance",
@@ -69,6 +84,7 @@ def main():
                 flag="30min delay from TGE",
                 vwap_1h=2.3149,
                 median_close_1h=2.1283,
+                first_candles_1m=[],  # Binance listed 30min later
             ),
         ],
 
@@ -89,7 +105,7 @@ def main():
             total_swaps=19786,
         ),
 
-        # Fundraising
+        # Fundraising with sources
         total_raised=12_100_000,
         fundraising_rounds=[
             FundraisingRound(
@@ -99,6 +115,7 @@ def main():
                 valuation=None,
                 lead_investors=["Multicoin Capital"],
                 token_price=None,
+                source="CryptoRank",
             ),
             FundraisingRound(
                 name="Series A",
@@ -107,6 +124,7 @@ def main():
                 valuation=None,
                 lead_investors=["Multicoin Capital", "Framework Ventures"],
                 token_price=None,
+                source="CryptoRank",
             ),
         ],
         fdv_to_raised_ratio=168.2,
@@ -172,7 +190,7 @@ def main():
             "CCXT (Bybit, Binance)",
             "Flipside (Solana DEX)",
             "CoinGecko (metadata)",
-            "Official Jito tokenomics docs",
+            "CryptoRank (fundraising)",
         ],
     )
 
@@ -183,14 +201,9 @@ def main():
     # Verify
     loaded = store.load("JTO")
     print(f"\nVerification:")
-    print(f"  Allocations: {len(loaded.allocations)} buckets")
-    print(f"  Investors: {len(loaded.investors)} investors")
-    print(f"  TGE Circulating: {loaded.tge_circulating_tokens:,} tokens")
-
-    # Show allocations summary
-    print(f"\nAllocations:")
-    for a in loaded.allocations:
-        print(f"  {a.bucket}: {a.percentage}% ({a.tokens:,} tokens) - TGE unlock: {a.tge_unlock_pct}%")
+    print(f"  Description: {loaded.description}")
+    print(f"  First candles (Bybit): {len(loaded.cex_data[0].first_candles_1m)} candles")
+    print(f"  Fundraising sources: {[r.source for r in loaded.fundraising_rounds]}")
 
 
 if __name__ == "__main__":
