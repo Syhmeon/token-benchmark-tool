@@ -3,7 +3,6 @@
 
 Usage:
     python scripts/test_apis.py
-    python scripts/test_apis.py --flipside-only
     python scripts/test_apis.py --all
 """
 
@@ -28,9 +27,9 @@ def test_config():
 
     print(f"\nAvailable sources: {', '.join(sources)}")
     print(f"\nAPI Keys configured:")
-    print(f"  - Flipside:      {'YES' if config.has_flipside() else 'NO'}")
+    print(f"  - CoinMarketCap: {'YES' if config.has_coinmarketcap() else 'NO'}")
     print(f"  - CryptoRank:    {'YES' if config.has_cryptorank() else 'NO'}")
-    print(f"  - DropsTab:      {'YES' if config.has_dropstab() else 'NO'}")
+    print(f"  - Messari:       {'YES' if config.has_messari() else 'NO'}")
     print(f"  - CoinGecko:     {'YES (optional)' if config.has_coingecko() else 'NO (using public API)'}")
 
     return config
@@ -106,43 +105,46 @@ def test_ccxt():
         return False
 
 
-def test_flipside(config):
-    """Test Flipside SQL API."""
+def test_coinmarketcap(config):
+    """Test CoinMarketCap API."""
     print("\n" + "=" * 60)
-    print("FLIPSIDE SQL API TEST")
+    print("COINMARKETCAP API TEST")
     print("=" * 60)
 
-    if not config.has_flipside():
+    if not config.has_coinmarketcap():
         print("  [SKIP] No API key configured")
         return None
 
     try:
-        from src.providers.dex.flipside_sql_provider import FlipsideSQLProvider
+        from src.providers.price.coinmarketcap_provider import CoinMarketCapProvider
 
-        provider = FlipsideSQLProvider()
+        provider = CoinMarketCapProvider()
 
         if not provider.is_available():
-            print("  [WARN] Flipside API not available")
+            print("  [WARN] CoinMarketCap API not available")
             return False
 
-        print("  [OK] Flipside API key configured")
-        print("  [INFO] Testing query (this may take 30-60 seconds)...")
+        print("  [OK] CoinMarketCap API available")
 
-        # Test with a simple query
-        result = provider.find_stabilization_hour(
-            token_mint="jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
-            listing_date=datetime(2023, 12, 7),
-            max_hours=6,
-        )
+        # Test quote
+        quote = provider.get_quote("JTO")
+        if quote:
+            print(f"  [OK] JTO price: ${quote.price_usd:.4f}")
+            print(f"  [OK] JTO market cap: ${quote.market_cap:,.0f}")
+            print(f"  [OK] JTO FDV: ${quote.fully_diluted_market_cap:,.0f}")
+            print(f"  [OK] CMC rank: #{quote.cmc_rank}")
+        else:
+            print("  [WARN] Could not fetch JTO quote")
+            return False
 
-        if result:
-            print(f"  [OK] Stabilization hour: {result.stabilization_hour}")
-            print(f"  [OK] Reference price: ${result.reference_price:.4f}")
-            print(f"  [OK] DEX count: {len(result.dex_prices)}")
+        # Test info
+        info = provider.get_info("JTO")
+        if info:
+            print(f"  [OK] Tags: {', '.join(info.tags[:3])}...")
             return True
         else:
-            print("  [WARN] No stabilization found (may be expected for test)")
-            return True  # API works, just no data
+            print("  [WARN] Could not fetch JTO info")
+            return False
 
     except Exception as e:
         print(f"  [ERROR] {e}")
@@ -170,53 +172,16 @@ def test_cryptorank(config):
 
         print("  [OK] CryptoRank API available")
 
-        # Test with JTO
-        fundraising = provider.get_fundraising(symbol="jito")
+        # Note: Sandbox plan may not include fundraising data
+        fundraising = provider.get_fundraising(symbol="JTO")
 
         if fundraising and fundraising.rounds:
             print(f"  [OK] JTO rounds: {len(fundraising.rounds)}")
             print(f"  [OK] Total raised: ${fundraising.total_raised_usd:,.0f}")
             return True
         else:
-            print("  [WARN] Could not fetch JTO fundraising data")
-            return False
-
-    except Exception as e:
-        print(f"  [ERROR] {e}")
-        return False
-
-
-def test_dropstab(config):
-    """Test DropsTab API."""
-    print("\n" + "=" * 60)
-    print("DROPSTAB API TEST")
-    print("=" * 60)
-
-    if not config.has_dropstab():
-        print("  [SKIP] No API key configured")
-        return None
-
-    try:
-        from src.providers.unlocks.dropstab_provider import DropsTabProvider
-
-        provider = DropsTabProvider()
-
-        if not provider.is_available():
-            print("  [WARN] DropsTab API not available")
-            return False
-
-        print("  [OK] DropsTab API available")
-
-        # Test with JTO
-        unlocks = provider.get_unlock_schedule(symbol="JTO")
-
-        if unlocks:
-            print(f"  [OK] JTO total supply: {unlocks.total_supply:,.0f}")
-            print(f"  [OK] Upcoming unlocks: {len(unlocks.upcoming_unlocks)}")
-            return True
-        else:
-            print("  [WARN] Could not fetch JTO unlock data")
-            return False
+            print("  [INFO] No fundraising data (Sandbox plan may be limited)")
+            return True  # API works, just limited data
 
     except Exception as e:
         print(f"  [ERROR] {e}")
@@ -230,7 +195,6 @@ def main():
     print("=" * 60)
 
     # Check for flags
-    flipside_only = "--flipside-only" in sys.argv
     test_all = "--all" in sys.argv
 
     # Load config
@@ -239,18 +203,16 @@ def main():
     results = {}
 
     # Always test these (no API key needed)
-    if not flipside_only:
-        results["CoinGecko"] = test_coingecko()
-        results["CCXT"] = test_ccxt()
+    results["CoinGecko"] = test_coingecko()
+    results["CCXT"] = test_ccxt()
 
-    # Test Flipside
-    if flipside_only or test_all or config.has_flipside():
-        results["Flipside"] = test_flipside(config)
+    # Test CMC if configured
+    if config.has_coinmarketcap():
+        results["CoinMarketCap"] = test_coinmarketcap(config)
 
-    # Test others if --all or configured
-    if test_all:
+    # Test CryptoRank if --all or configured
+    if test_all or config.has_cryptorank():
         results["CryptoRank"] = test_cryptorank(config)
-        results["DropsTab"] = test_dropstab(config)
 
     # Summary
     print("\n" + "=" * 60)

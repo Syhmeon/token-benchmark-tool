@@ -1,5 +1,6 @@
 """Token unlocks data providers."""
 
-from .dropstab_provider import DropsTabProvider
+# No providers currently available
+# DropsTab removed (no free API plan)
 
-__all__ = ["DropsTabProvider"]
+__all__ = []

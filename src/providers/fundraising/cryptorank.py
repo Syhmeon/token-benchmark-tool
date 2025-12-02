@@ -59,10 +59,15 @@ class CryptoRankFundraisingProvider(CachedProvider):
 
     def is_available(self) -> bool:
         """Check if CryptoRank API is available."""
+        if not self.api_key:
+            return False
         try:
             self._wait_for_rate_limit()
             with httpx.Client(timeout=10.0) as client:
-                response = client.get(f"{self.BASE_URL}/global")
+                response = client.get(
+                    f"{self.BASE_URL}/global",
+                    params={"api_key": self.api_key}
+                )
                 return response.status_code == 200
         except Exception:
             return False
@@ -140,6 +145,13 @@ class CryptoRankFundraisingProvider(CachedProvider):
         Returns:
             List of matching projects
         """
+        # Try symbols parameter first (exact match)
+        data = self._make_request("/currencies", params={"symbols": query.upper(), "limit": 10})
+        results = data.get("data", [])
+        if results:
+            return results
+
+        # Fallback to search parameter
         data = self._make_request("/currencies", params={"search": query, "limit": 10})
         return data.get("data", [])
 
@@ -162,10 +174,11 @@ class CryptoRankFundraisingProvider(CachedProvider):
         symbol_upper = symbol_or_name.upper()
         for project in results:
             if project.get("symbol", "").upper() == symbol_upper:
-                return project.get("key")
+                # Return numeric ID (API requires numeric ID, not slug)
+                return str(project.get("id"))
 
         # Fall back to first result
-        return results[0].get("key") if results else None
+        return str(results[0].get("id")) if results else None
 
     def get_fundraising(
         self,

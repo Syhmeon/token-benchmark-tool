@@ -1,5 +1,6 @@
 """DEX data providers."""
 
-from .flipside_sql_provider import FlipsideSQLProvider, DEXStabilizationResult, DEXSwapData
+# Flipside SQL API deprecated since July 2025
+# Use Flipside MCP Server instead: https://docs.flipsidecrypto.xyz/flipsideai/mcp-server
 
-__all__ = ["FlipsideSQLProvider", "DEXStabilizationResult", "DEXSwapData"]
+__all__ = []

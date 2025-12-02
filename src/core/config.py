@@ -13,26 +13,17 @@ from typing import Optional
 class APIConfig:
     """API configuration for all data providers."""
 
-    # CoinGecko
+    # CoinGecko (optional - public API works without key)
     coingecko_api_key: Optional[str] = None
 
-    # CryptoRank
+    # CryptoRank (fundraising, investors) - Sandbox plan limited
     cryptorank_api_key: Optional[str] = None
 
-    # Flipside Crypto
-    flipside_api_key: Optional[str] = None
-
-    # DropsTab
-    dropstab_api_key: Optional[str] = None
-
-    # CoinMarketCap
+    # CoinMarketCap (price backup, holders, DEX overview)
     coinmarketcap_api_key: Optional[str] = None
 
-    # Messari
+    # Messari (backup - fundraising)
     messari_api_key: Optional[str] = None
-
-    # Tokenomist
-    tokenomist_api_key: Optional[str] = None
 
     @classmethod
     def from_env(cls) -> "APIConfig":
@@ -40,11 +31,8 @@ class APIConfig:
         return cls(
             coingecko_api_key=os.getenv("COINGECKO_API_KEY"),
             cryptorank_api_key=os.getenv("CRYPTORANK_API_KEY"),
-            flipside_api_key=os.getenv("FLIPSIDE_API_KEY"),
-            dropstab_api_key=os.getenv("DROPSTAB_API_KEY"),
             coinmarketcap_api_key=os.getenv("COINMARKETCAP_API_KEY"),
             messari_api_key=os.getenv("MESSARI_API_KEY"),
-            tokenomist_api_key=os.getenv("TOKENOMIST_API_KEY"),
         )
 
     @classmethod
@@ -77,17 +65,17 @@ class APIConfig:
 
         return cls.from_env()
 
-    def has_flipside(self) -> bool:
-        """Check if Flipside API key is configured."""
-        return bool(self.flipside_api_key)
-
     def has_cryptorank(self) -> bool:
         """Check if CryptoRank API key is configured."""
         return bool(self.cryptorank_api_key)
 
-    def has_dropstab(self) -> bool:
-        """Check if DropsTab API key is configured."""
-        return bool(self.dropstab_api_key)
+    def has_coinmarketcap(self) -> bool:
+        """Check if CoinMarketCap API key is configured."""
+        return bool(self.coinmarketcap_api_key)
+
+    def has_messari(self) -> bool:
+        """Check if Messari API key is configured."""
+        return bool(self.messari_api_key)
 
     def has_coingecko(self) -> bool:
         """Check if CoinGecko API key is configured (optional)."""
@@ -100,18 +88,12 @@ class APIConfig:
         # CoinGecko works without API key (rate limited)
         sources.append("coingecko")
 
-        if self.flipside_api_key:
-            sources.append("flipside")
         if self.cryptorank_api_key:
             sources.append("cryptorank")
-        if self.dropstab_api_key:
-            sources.append("dropstab")
         if self.coinmarketcap_api_key:
             sources.append("coinmarketcap")
         if self.messari_api_key:
             sources.append("messari")
-        if self.tokenomist_api_key:
-            sources.append("tokenomist")
 
         return sources
 
