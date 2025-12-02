@@ -1,0 +1,167 @@
+# Allocation Mapping Configuration
+# Maps raw allocation labels from various sources to canonical buckets
+#
+# Canonical buckets:
+#   - team_founder
+#   - advisors_partner
+#   - investors
+#   - public_sales
+#   - airdrop
+#   - community_rewards
+#   - listing_liquidity
+#   - ecosystem_rd
+#   - treasury_reserve
+#   - unknown (fallback)
+#
+# Each mapping rule has:
+#   - patterns: list of regex patterns (case-insensitive)
+#   - priority: higher = preferred when multiple patterns match
+
+canonical_buckets:
+  team_founder:
+    display_name: "Team / Founder"
+    patterns:
+      - "^team$"
+      - "^founder"
+      - "^core.*team"
+      - "^development.*team"
+      - "^founding"
+      - "^employee"
+      - "^staff"
+      - "^core.*contributor"
+    priority: 10
+
+  advisors_partner:
+    display_name: "Advisors / Partners"
+    patterns:
+      - "^advisor"
+      - "^partner"
+      - "^strategic.*partner"
+      - "^consultant"
+    priority: 10
+
+  investors:
+    display_name: "Investors"
+    patterns:
+      - "^investor"
+      - "^seed"
+      - "^private"
+      - "^strategic.*sale"
+      - "^strategic.*round"
+      - "^series.*[a-z]"
+      - "^vc"
+      - "^venture"
+      - "^early.*investor"
+      - "^pre.*seed"
+      - "^angel"
+      - "^launchpad.*allocation"
+      - "^binance.*launchpad"
+    priority: 10
+
+  public_sales:
+    display_name: "Public Sales"
+    patterns:
+      - "^public"
+      - "^ico"
+      - "^ido"
+      - "^ieo"
+      - "^token.*sale"
+      - "^crowd.*sale"
+      - "^community.*sale"
+      - "^launch.*sale"
+    priority: 10
+
+  airdrop:
+    display_name: "Airdrop"
+    patterns:
+      - "^airdrop"
+      - "^air.*drop"
+      - "^retro.*drop"
+      - "^retroactive"
+      - "^user.*distribution"
+      - "^user.*allocation"
+      - "^early.*user"
+    priority: 10
+
+  community_rewards:
+    display_name: "Community / Rewards"
+    patterns:
+      - "^community(?!.*sale)"  # community but not community sale
+      - "^reward"
+      - "^incentive"
+      - "^mining"
+      - "^staking.*reward"
+      - "^yield"
+      - "^emission"
+      - "^farming"
+      - "^liquidity.*mining"
+      - "^governance.*reward"
+      - "^contributor"
+      - "^grant"
+      - "^bounty"
+    priority: 9
+
+  listing_liquidity:
+    display_name: "Listing / Liquidity"
+    patterns:
+      - "^listing"
+      - "^liquidity"
+      - "^market.*mak"
+      - "^exchange"
+      - "^cex"
+      - "^dex.*liquidity"
+      - "^trading"
+      - "^launch.*liquidity"
+    priority: 10
+
+  ecosystem_rd:
+    display_name: "Ecosystem / R&D"
+    patterns:
+      - "^ecosystem"
+      - "^development"
+      - "^r&d"
+      - "^research"
+      - "^protocol.*development"
+      - "^network.*development"
+      - "^growth"
+      - "^adoption"
+      - "^integration"
+      - "^foundation"
+      - "^dao.*treasury"
+    priority: 8
+
+  treasury_reserve:
+    display_name: "Treasury / Reserve"
+    patterns:
+      - "^treasury"
+      - "^reserve"
+      - "^strategic.*reserve"
+      - "^emergency"
+      - "^insurance"
+      - "^protocol.*owned"
+    priority: 10
+
+  unknown:
+    display_name: "Unknown / Other"
+    patterns:
+      - ".*"  # fallback catch-all
+    priority: 0
+
+# Source-specific overrides (some sources use non-standard labels)
+source_overrides:
+  cryptorank:
+    "Core Contributors": "team_founder"
+    "Foundation": "ecosystem_rd"
+    "DAO Treasury": "treasury_reserve"
+
+  icodrops:
+    "Token Sale": "public_sales"
+    "Private/Presale": "investors"
+
+# Conflict thresholds
+conflict_detection:
+  # Flag as conflict if same bucket differs by more than this percentage
+  percentage_threshold: 5.0
+  # Flag if total allocations from a source exceed this (should be ~100%)
+  total_allocation_max: 105.0
+  total_allocation_min: 95.0

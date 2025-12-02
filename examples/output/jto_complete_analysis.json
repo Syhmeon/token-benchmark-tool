@@ -1,0 +1,88 @@
+{
+  "token": {
+    "name": "Jito",
+    "symbol": "JTO",
+    "blockchain": "Solana",
+    "coingecko_id": "jito-governance-token",
+    "category": [
+      "Liquid Staking",
+      "MEV Infrastructure",
+      "DeFi"
+    ],
+    "listing_date": "2023-12-07",
+    "total_supply": 1000000000,
+    "tge_circulating_pct": 11.5
+  },
+  "cex_data": {
+    "bybit": {
+      "first_candle_time": "2023-12-07 16:00:00 UTC",
+      "open": 0.03,
+      "high": 3.00001,
+      "low": 0.03,
+      "close": 3.0,
+      "hl_ratio": 100.0,
+      "is_tge_candle": true,
+      "flag": "SUSPECT - extreme wicks",
+      "vwap_1h": 2.1238,
+      "median_close_1h": 2.0535
+    },
+    "binance": {
+      "first_candle_time": "2023-12-07 16:30:00 UTC",
+      "open": 0.15,
+      "high": 4.94,
+      "low": 0.15,
+      "close": 3.6953,
+      "hl_ratio": 32.9,
+      "is_tge_candle": true,
+      "flag": "30min delay from TGE",
+      "vwap_1h": 2.3149,
+      "median_close_1h": 2.1283
+    }
+  },
+  "dex_data": {
+    "source": "flipside",
+    "first_swap": "2023-12-07 16:04:29",
+    "stabilization_hour": "2023-12-07T18:00:00",
+    "reference_price": 2.0352,
+    "spread_pct": 0.41,
+    "confidence": "HIGH",
+    "dex_prices": {
+      "orca_whirlpool": 2.0355999999999996,
+      "phoenix": 2.03565,
+      "raydium_clmm": 2.0337,
+      "jupiter_v2": 2.02735,
+      "meteora_dlmm": 2.0354,
+      "meteora_pools": 2.0348
+    },
+    "total_swaps": 19786
+  },
+  "benchmark_valuation": {
+    "method": "dex_stabilization",
+    "reference_price": 2.0352,
+    "fdv_usd": 2035200000.0000002,
+    "mcap_usd": 234048000.0,
+    "confidence": "HIGH"
+  },
+  "fundraising": {
+    "total_raised": 12100000,
+    "rounds": [
+      {
+        "name": "Seed",
+        "date": "2021-12",
+        "amount": 2100000
+      },
+      {
+        "name": "Series A",
+        "date": "2022-08",
+        "amount": 10000000
+      }
+    ],
+    "fdv_to_raised_ratio": 168.2
+  },
+  "methodology_notes": [
+    "CEX first candles show H/L ratio > 30x - flagged as TGE candles",
+    "Bybit shows impossible wicks ($32) vs ATH ($5.91) - marked SUSPECT",
+    "DEX stabilization at +2h when 5 protocols converge within 0.41% spread",
+    "Benchmark price = volume-weighted average of DEX prices at stabilization"
+  ]
+}

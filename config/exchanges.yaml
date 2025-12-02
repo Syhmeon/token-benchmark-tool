@@ -1,0 +1,107 @@
+# Exchange-specific configuration
+# Symbol mappings and quirks per exchange
+
+exchanges:
+  binance:
+    name: "Binance"
+    ccxt_id: "binance"
+    # Common quote currencies to try (in order of preference)
+    quote_currencies: ["USDT", "USDC", "BUSD", "BTC", "ETH"]
+    # Symbol format: {base}{quote} (no separator)
+    symbol_format: "{base}{quote}"
+    # Historical data availability
+    historical_data:
+      available: true
+      max_lookback_days: 365
+      min_timeframe: "1m"
+    # Known symbol quirks (token_id -> exchange symbol)
+    symbol_overrides: {}
+
+  okx:
+    name: "OKX"
+    ccxt_id: "okx"
+    quote_currencies: ["USDT", "USDC", "BTC", "ETH"]
+    symbol_format: "{base}-{quote}"
+    historical_data:
+      available: true
+      max_lookback_days: 365
+      min_timeframe: "1m"
+    symbol_overrides: {}
+
+  bybit:
+    name: "Bybit"
+    ccxt_id: "bybit"
+    quote_currencies: ["USDT", "USDC", "BTC"]
+    symbol_format: "{base}{quote}"
+    historical_data:
+      available: true
+      max_lookback_days: 180
+      min_timeframe: "1m"
+    symbol_overrides: {}
+
+  kucoin:
+    name: "KuCoin"
+    ccxt_id: "kucoin"
+    quote_currencies: ["USDT", "USDC", "BTC", "ETH"]
+    symbol_format: "{base}-{quote}"
+    historical_data:
+      available: true
+      max_lookback_days: 365
+      min_timeframe: "1m"
+    symbol_overrides: {}
+
+  gateio:
+    name: "Gate.io"
+    ccxt_id: "gateio"
+    quote_currencies: ["USDT", "USDC", "BTC", "ETH"]
+    symbol_format: "{base}_{quote}"
+    historical_data:
+      available: true
+      max_lookback_days: 365
+      min_timeframe: "1m"
+    symbol_overrides: {}
+
+  htx:
+    name: "HTX (Huobi)"
+    ccxt_id: "htx"
+    quote_currencies: ["USDT", "USDC", "BTC", "ETH"]
+    symbol_format: "{base}{quote}"
+    historical_data:
+      available: true
+      max_lookback_days: 365
+      min_timeframe: "1m"
+    symbol_overrides: {}
+
+  coinbase:
+    name: "Coinbase"
+    ccxt_id: "coinbase"
+    quote_currencies: ["USD", "USDT", "USDC", "BTC", "ETH"]
+    symbol_format: "{base}-{quote}"
+    historical_data:
+      available: true
+      max_lookback_days: 365
+      min_timeframe: "1m"
+    symbol_overrides: {}
+
+  kraken:
+    name: "Kraken"
+    ccxt_id: "kraken"
+    quote_currencies: ["USD", "USDT", "EUR", "BTC", "ETH"]
+    symbol_format: "{base}/{quote}"
+    historical_data:
+      available: true
+      max_lookback_days: 365
+      min_timeframe: "1m"
+    # Kraken uses some non-standard symbols
+    symbol_overrides:
+      bitcoin: "XBT"
+      ethereum: "ETH"
+
+# Default configuration for new/unknown exchanges
+default:
+  quote_currencies: ["USDT", "USDC", "BTC"]
+  symbol_format: "{base}{quote}"
+  historical_data:
+    available: false
+    max_lookback_days: 30
+    min_timeframe: "1h"

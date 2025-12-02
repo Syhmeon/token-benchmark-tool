@@ -1,0 +1,88 @@
+{
+  "symbol": "LINK",
+  "name": "Chainlink",
+  "coingecko_id": "chainlink",
+  "blockchain": "Ethereum",
+  "categories": [
+    "Oracle",
+    "DeFi Infrastructure",
+    "Smart Contracts"
+  ],
+  "listing_date": "2017-09-20",
+  "total_supply": 1000000000,
+  "max_supply": 1000000000,
+  "tge_circulating_pct": 35.0,
+  "tge_circulating_tokens": 350000000,
+  "current_circulating_tokens": 626849970,
+  "benchmark_price": 0.11,
+  "benchmark_method": "ico_price",
+  "benchmark_confidence": "MEDIUM",
+  "fdv_usd": 110000000,
+  "mcap_usd": 38500000,
+  "cex_data": [
+    {
+      "exchange": "binance",
+      "first_candle_time": "2019-01-16 00:00:00 UTC",
+      "open": 0.29,
+      "high": 0.3,
+      "low": 0.28,
+      "close": 0.29,
+      "hl_ratio": 1.07,
+      "is_tge_candle": false,
+      "flag": "Late listing (2019)",
+      "vwap_1h": 0.29,
+      "median_close_1h": 0.29
+    }
+  ],
+  "dex_stabilization": null,
+  "total_raised": 32000000,
+  "fundraising_rounds": [
+    {
+      "name": "ICO",
+      "date": "2017-09",
+      "amount": 32000000,
+      "valuation": 110000000,
+      "lead_investors": [],
+      "token_price": 0.11
+    }
+  ],
+  "fdv_to_raised_ratio": 3.4,
+  "investors": [
+    "Public ICO participants"
+  ],
+  "allocations": [
+    {
+      "bucket": "Public Sale (ICO)",
+      "percentage": 35.0,
+      "tokens": 350000000,
+      "vesting": "TGE 100%",
+      "tge_unlock_pct": 100.0
+    },
+    {
+      "bucket": "Node Operators & Ecosystem",
+      "percentage": 35.0,
+      "tokens": 350000000,
+      "vesting": "Distributed over time for network growth",
+      "tge_unlock_pct": 0.0
+    },
+    {
+      "bucket": "Company (Chainlink Labs)",
+      "percentage": 30.0,
+      "tokens": 300000000,
+      "vesting": "Reserved for team and development",
+      "tge_unlock_pct": 0.0
+    }
+  ],
+  "methodology_notes": [
+    "Pre-DEX era token (2017) - DEX stabilization methodology not applicable",
+    "Benchmark price from ICO sale price ($0.11)",
+    "Binance listing was Jan 2019, not TGE",
+    "Limited historical CEX data from 2017 available"
+  ],
+  "sources": [
+    "ICO data (CryptoRank, ICODrops)",
+    "CoinGecko (current supply)",
+    "CCXT (Binance - late listing)"
+  ],
+  "last_updated": "2025-11-28T16:38:06.485940+00:00"
+}

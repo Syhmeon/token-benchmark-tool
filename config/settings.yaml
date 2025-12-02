@@ -1,0 +1,126 @@
+# Token Listing Tool - Settings Configuration
+
+# API Configuration
+apis:
+  coingecko:
+    base_url: "https://api.coingecko.com/api/v3"
+    # For pro API, set: base_url: "https://pro-api.coingecko.com/api/v3"
+    api_key: null  # Set via environment variable COINGECKO_API_KEY
+    rate_limit:
+      calls_per_minute: 30  # Free tier limit
+      retry_after_seconds: 60
+    timeout_seconds: 30
+
+  cryptorank:
+    base_url: "https://api.cryptorank.io/v1"
+    api_key: null  # Set via environment variable CRYPTORANK_API_KEY
+    rate_limit:
+      calls_per_minute: 60
+      retry_after_seconds: 30
+    timeout_seconds: 30
+
+# CCXT Exchange Configuration
+exchanges:
+  # Priority order for checking first listing
+  # Higher priority = checked first, used as reference if earliest
+  priority_list:
+    - exchange: binance
+      priority: 100
+      enabled: true
+    - exchange: okx
+      priority: 90
+      enabled: true
+    - exchange: bybit
+      priority: 85
+      enabled: true
+    - exchange: kucoin
+      priority: 80
+      enabled: true
+    - exchange: gateio
+      priority: 75
+      enabled: true
+    - exchange: htx
+      priority: 70
+      enabled: true
+    - exchange: coinbase
+      priority: 95
+      enabled: true
+    - exchange: kraken
+      priority: 85
+      enabled: true
+
+  # Default timeframe for fetching candles
+  default_timeframe: "1h"
+
+  # Fallback timeframes if 1h not available
+  fallback_timeframes:
+    - "4h"
+    - "1d"
+
+  # Maximum days to look back from hint date
+  lookback_days: 7
+
+  # Rate limiting per exchange
+  rate_limits:
+    default:
+      calls_per_minute: 60
+      retry_after_seconds: 10
+    binance:
+      calls_per_minute: 120
+    kucoin:
+      calls_per_minute: 30
+
+# Price Selection Rules
+price_selection:
+  # Method to select reference initial price
+  # Options: "earliest_open", "earliest_close", "first_hour_vwap", "first_day_vwap"
+  default_method: "earliest_open"
+
+  # Minimum volume threshold (USD) to consider a candle valid
+  min_volume_usd: 1000
+
+  # Maximum price deviation from first candle to filter outliers
+  max_price_deviation_pct: 50
+
+# Supply Estimation
+supply_estimation:
+  # When circulating supply at listing is unknown, what to do
+  # Options: "use_current", "use_manual", "mark_unknown"
+  fallback_method: "mark_unknown"
+
+  # Flag to always require manual override for circulating supply
+  require_manual_circulating: false
+
+# Output Configuration
+output:
+  # Default format
+  default_format: "table"
+
+  # Decimal places for different fields
+  decimals:
+    price: 6
+    percentage: 2
+    fdv: 0
+    mcap: 0
+    raised: 0
+
+  # CSV settings
+  csv:
+    delimiter: ","
+    quote_char: '"'
+    include_headers: true
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: null  # Set to path for file logging
+
+# Cache Configuration
+cache:
+  enabled: true
+  directory: ".cache"
+  ttl_seconds:
+    coingecko: 3600      # 1 hour
+    cryptorank: 3600     # 1 hour
+    exchange_candles: 86400  # 24 hours (historical data doesn't change)
