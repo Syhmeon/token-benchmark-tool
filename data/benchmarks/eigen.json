@@ -1,0 +1,172 @@
+{
+  "symbol": "EIGEN",
+  "name": "EigenLayer",
+  "coingecko_id": "eigenlayer",
+  "blockchain": "Ethereum",
+  "contract_address": "0xec53bf9167f50cdeb3ae105f56099aaab9061f83",
+  "categories": [
+    "Restaking",
+    "Infrastructure",
+    "DeFi"
+  ],
+  "listing_date": "2024-10-01",
+  "description": "EigenLayer is a protocol built on Ethereum that introduces Restaking, allowing staked ETH to be used as cryptoeconomic security for other protocols.",
+  "total_supply": 1770084115,
+  "max_supply": 1770084115,
+  "tge_circulating_pct": 6.05,
+  "tge_circulating_tokens": 107100000,
+  "benchmark_price": 3.95,
+  "benchmark_method": "dex_stabilization",
+  "benchmark_confidence": "HIGH",
+  "fdv_usd": 6991832254,
+  "mcap_usd": 423045000,
+  "cex_data": [
+    {
+      "exchange": "bitget",
+      "first_candle_time": "2024-10-01 04:00:00 UTC",
+      "open": 0.04,
+      "high": 5.00,
+      "low": 0.04,
+      "close": 3.73,
+      "hl_ratio": 125.0,
+      "is_tge_candle": true,
+      "flag": "SUSPECT - extreme wicks"
+    },
+    {
+      "exchange": "bybit",
+      "first_candle_time": "2024-10-01 04:10:00 UTC",
+      "open": 0.30,
+      "high": 4.00,
+      "low": 0.30,
+      "close": 3.43,
+      "hl_ratio": 13.3,
+      "is_tge_candle": true,
+      "flag": "TGE volatility"
+    },
+    {
+      "exchange": "binance",
+      "first_candle_time": "2024-10-01 05:00:00 UTC",
+      "open": 0.30,
+      "high": 4.94,
+      "low": 0.30,
+      "close": 4.00,
+      "hl_ratio": 16.5,
+      "is_tge_candle": true,
+      "flag": "1h delay from TGE"
+    }
+  ],
+  "dex_stabilization": {
+    "stabilization_hour": "2024-10-01T04:00:00",
+    "reference_price": 3.95,
+    "spread_pct": 1.2,
+    "confidence": "HIGH",
+    "dex_prices": {
+      "uniswap_v3_03h": {
+        "hour": "03:00",
+        "avg_sell_price": 3.98,
+        "avg_buy_price": 3.97,
+        "swap_count": 892,
+        "volume_usd": 1761803
+      },
+      "uniswap_v3_04h": {
+        "hour": "04:00",
+        "avg_sell_price": 3.92,
+        "avg_buy_price": 3.93,
+        "swap_count": 2363,
+        "volume_usd": 11400812
+      },
+      "uniswap_v3_05h": {
+        "hour": "05:00",
+        "avg_sell_price": 4.17,
+        "avg_buy_price": 4.32,
+        "swap_count": 2048,
+        "volume_usd": 15163712
+      },
+      "uniswap_v3_09h": {
+        "hour": "09:00",
+        "avg_sell_price": 4.09,
+        "avg_buy_price": 4.16,
+        "swap_count": 652,
+        "volume_usd": 4546127
+      }
+    },
+    "total_first_day_swaps": 13893,
+    "total_first_day_volume_usd": 110727000,
+    "notes": "EIGEN had pre-launch airdrop claims, prices stabilized quickly around $3.90-$4.00"
+  },
+  "total_raised": 164500000,
+  "fundraising_rounds": [
+    {
+      "name": "Series A",
+      "date": "2023-03",
+      "amount": 50000000,
+      "valuation": 500000000,
+      "lead_investors": ["Blockchain Capital", "Coinbase Ventures", "Polychain Capital"],
+      "source": "CryptoRank"
+    },
+    {
+      "name": "Series B",
+      "date": "2024-02",
+      "amount": 100000000,
+      "valuation": null,
+      "lead_investors": ["a16z"],
+      "source": "CryptoRank"
+    },
+    {
+      "name": "Strategic",
+      "date": "2024-05",
+      "amount": 14500000,
+      "valuation": null,
+      "lead_investors": [],
+      "source": "CryptoRank"
+    }
+  ],
+  "fdv_to_raised_ratio": 42.5,
+  "investors": [
+    "a16z",
+    "Blockchain Capital",
+    "Coinbase Ventures",
+    "Polychain Capital",
+    "Electric Capital",
+    "Hack VC",
+    "Finality Capital Partners",
+    "Robot Ventures"
+  ],
+  "allocations": [
+    {
+      "bucket": "Community",
+      "percentage": 45.0,
+      "tokens": 796537852,
+      "vesting": "Various schedules",
+      "tge_unlock_pct": 5.0
+    },
+    {
+      "bucket": "Investors",
+      "percentage": 29.5,
+      "tokens": 522174814,
+      "vesting": "3 years, 1 year cliff",
+      "tge_unlock_pct": 0.0
+    },
+    {
+      "bucket": "Core Contributors",
+      "percentage": 25.5,
+      "tokens": 451371449,
+      "vesting": "3 years, 1 year cliff",
+      "tge_unlock_pct": 0.0
+    }
+  ],
+  "methodology_notes": [
+    "CEX first candles show H/L ratio > 13x - flagged as TGE candles",
+    "DEX trading started at 03:35 UTC on Uniswap-v3",
+    "Prices stabilized quickly due to pre-launch airdrop enabling price discovery",
+    "Benchmark price = average of first few hours DEX prices (~$3.95)",
+    "Total first day DEX volume exceeded $110M"
+  ],
+  "sources": [
+    "Flipside (Ethereum DEX)",
+    "CCXT (Bitget, Bybit, Binance)",
+    "CoinGecko (metadata)",
+    "CryptoRank (fundraising)"
+  ],
+  "last_updated": "2025-12-02T10:00:00+00:00"
+}

@@ -24,6 +24,9 @@ Thumbs.db
 .env
 .env.local
 
+# Streamlit secrets (add via Streamlit Cloud UI)
+.streamlit/secrets.toml
+
 # Charts output (regenerated)
 charts/
 
