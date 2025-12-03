@@ -33,6 +33,10 @@ class DEXStabilization:
     confidence: str
     dex_prices: Dict[str, float] = field(default_factory=dict)
     total_swaps: int = 0
+    # First DEX data (for tokens where DEX trading starts before CEX)
+    first_dex: Optional[str] = None  # e.g., "uniswap_v3"
+    first_dex_time: Optional[str] = None  # e.g., "2024-10-01 03:35:00 UTC"
+    first_candles_1m: List[Dict[str, Any]] = field(default_factory=list)  # First 10 1-minute candles
 
 
 @dataclass
@@ -73,6 +77,21 @@ class TokenAllocation:
     tokens: int
     vesting: str  # e.g., "3 years, 1 year cliff" or "TGE 100%"
     tge_unlock_pct: float = 0.0  # Percentage unlocked at TGE
+    cliff_months: int = 0  # Months before vesting starts
+    vesting_months: int = 0  # Total vesting duration in months
+
+
+@dataclass
+class HolderData:
+    """Token holder distribution data."""
+    total_holders: int = 0
+    top_10_pct: float = 0.0  # % of supply held by top 10
+    top_50_pct: float = 0.0  # % of supply held by top 50
+    top_100_pct: float = 0.0  # % of supply held by top 100
+    top_holders: List[Dict[str, Any]] = field(default_factory=list)  # [{address, balance, pct}]
+    source: str = ""  # "flipside", "cmc", etc.
+    snapshot_date: str = ""
+    notes: Optional[str] = None  # Additional notes about data discrepancies, methodology, etc.
 
 
 @dataclass
@@ -114,6 +133,9 @@ class TokenBenchmark:
     # Token allocations
     allocations: List[TokenAllocation] = field(default_factory=list)
 
+    # Holder distribution
+    holders: Optional[HolderData] = None
+
     # Metadata
     methodology_notes: List[str] = field(default_factory=list)
     sources: List[str] = field(default_factory=list)
@@ -150,6 +172,10 @@ class TokenBenchmark:
                 TokenAllocation(**a) if isinstance(a, dict) else a
                 for a in data["allocations"]
             ]
+
+        if "holders" in data and data["holders"]:
+            if isinstance(data["holders"], dict):
+                data["holders"] = HolderData(**data["holders"])
 
         return cls(**data)
 

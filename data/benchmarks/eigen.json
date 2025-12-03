@@ -31,8 +31,8 @@
       "hl_ratio": 125.0,
       "is_tge_candle": true,
       "flag": "SUSPECT - extreme wicks",
-      "vwap_1h": null,
-      "median_close_1h": null,
+      "vwap_1h": 3.95,
+      "median_close_1h": 3.90,
       "first_candles_1m": []
     },
     {
@@ -45,8 +45,8 @@
       "hl_ratio": 13.3,
       "is_tge_candle": true,
       "flag": "TGE volatility",
-      "vwap_1h": null,
-      "median_close_1h": null,
+      "vwap_1h": 3.92,
+      "median_close_1h": 3.88,
       "first_candles_1m": []
     },
     {
@@ -59,8 +59,8 @@
       "hl_ratio": 16.5,
       "is_tge_candle": true,
       "flag": "1h delay from TGE",
-      "vwap_1h": null,
-      "median_close_1h": null,
+      "vwap_1h": 4.02,
+      "median_close_1h": 4.00,
       "first_candles_1m": []
     }
   ],
@@ -73,6 +73,20 @@
       "uniswap_v3": 3.93,
       "pancakeswap_v3": 4.06
     },
+    "first_dex": "uniswap_v3",
+    "first_dex_time": "2024-10-01 03:35:00 UTC",
+    "first_candles_1m": [
+      {"minute": 1, "time": "03:35:00", "open": 5.11, "high": 5.11, "low": 5.11, "close": 5.11},
+      {"minute": 2, "time": "03:36:00", "open": 4.72, "high": 4.72, "low": 4.72, "close": 4.72},
+      {"minute": 3, "time": "03:37:00", "open": 4.46, "high": 4.46, "low": 4.46, "close": 4.46},
+      {"minute": 4, "time": "03:38:00", "open": 4.36, "high": 4.36, "low": 4.36, "close": 4.36},
+      {"minute": 5, "time": "03:39:00", "open": 4.18, "high": 4.18, "low": 4.18, "close": 4.18},
+      {"minute": 6, "time": "03:40:00", "open": 4.21, "high": 4.21, "low": 4.21, "close": 4.21},
+      {"minute": 7, "time": "03:41:00", "open": 4.03, "high": 4.03, "low": 4.03, "close": 4.03},
+      {"minute": 8, "time": "03:42:00", "open": 3.99, "high": 3.99, "low": 3.99, "close": 3.99},
+      {"minute": 9, "time": "03:43:00", "open": 4.01, "high": 4.01, "low": 4.01, "close": 4.01},
+      {"minute": 10, "time": "03:44:00", "open": 4.10, "high": 4.10, "low": 4.10, "close": 4.10}
+    ],
     "total_swaps": 13893
   },
   "total_raised": 234500000,
@@ -127,41 +141,102 @@
   ],
   "allocations": [
     {
-      "bucket": "Community",
-      "percentage": 45.0,
-      "tokens": 796537852,
-      "vesting": "Various schedules",
-      "tge_unlock_pct": 5.0
+      "bucket": "Early Contributors",
+      "percentage": 25.5,
+      "tokens": 451371449,
+      "vesting": "1 year cliff, then 4% monthly (25 months linear)",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 12,
+      "vesting_months": 37
     },
     {
       "bucket": "Investors",
       "percentage": 29.5,
       "tokens": 522174814,
-      "vesting": "3 years, 1 year cliff",
-      "tge_unlock_pct": 0.0
+      "vesting": "1 year cliff, then 4% monthly (25 months linear)",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 12,
+      "vesting_months": 37
     },
     {
-      "bucket": "Core Contributors",
-      "percentage": 25.5,
-      "tokens": 451371449,
-      "vesting": "3 years, 1 year cliff",
-      "tge_unlock_pct": 0.0
+      "bucket": "Airdrop",
+      "percentage": 11.9,
+      "tokens": 210640010,
+      "vesting": "Stakedrops 1,2 - 100% at TGE",
+      "tge_unlock_pct": 100.0,
+      "cliff_months": 0,
+      "vesting_months": 0
+    },
+    {
+      "bucket": "Community / Rewards",
+      "percentage": 4.1,
+      "tokens": 72573449,
+      "vesting": "Linear over 12 months",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 0,
+      "vesting_months": 12
+    },
+    {
+      "bucket": "Ecosystem / R&D",
+      "percentage": 15.0,
+      "tokens": 265512617,
+      "vesting": "TBD - gradual release",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 0,
+      "vesting_months": 36
+    },
+    {
+      "bucket": "Treasury / Reserve",
+      "percentage": 14.0,
+      "tokens": 247611776,
+      "vesting": "Future Community (10.9%) + Future Stakedrops (3.1%) - TBD",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 0,
+      "vesting_months": 0
     }
   ],
+  "holders": {
+    "total_holders": 224080,
+    "top_10_pct": 36.71,
+    "top_50_pct": null,
+    "top_100_pct": null,
+    "top_holders": [
+      {"rank": 1, "pct": 13.27, "label": "0x5f55...7a19d7", "address": "0x5f557a19d7"},
+      {"rank": 2, "pct": 5.55, "label": "0xec53...061f83", "address": "0xec53061f83"},
+      {"rank": 3, "pct": 4.68, "label": "0xf977...41acec", "address": "0xf97741acec"},
+      {"rank": 4, "pct": 4.66, "label": "0x34bc...67a026", "address": "0x34bc67a026"},
+      {"rank": 5, "pct": 4.34, "label": "0x8778...25a60f", "address": "0x877825a60f"},
+      {"rank": 6, "pct": 1.08, "label": "0x7750...b0adda", "address": "0x7750b0adda"},
+      {"rank": 7, "pct": 0.92, "label": "0xa4b9...e1bf30", "address": "0xa4b9e1bf30"},
+      {"rank": 8, "pct": 0.79, "label": "0x76ec...78fbd3", "address": "0x76ec78fbd3"},
+      {"rank": 9, "pct": 0.72, "label": "0x2594...d477e9", "address": "0x2594d477e9"},
+      {"rank": 10, "pct": 0.66, "label": "0x564a...b29856", "address": "0x564ab29856"}
+    ],
+    "source": "CoinMarketCap",
+    "snapshot_date": "2025-12-02",
+    "notes": "Total holders from CMC (224,080). Top 10 concentration 36.71%. Previous value (544) was INCORRECTLY entered - likely from a Flipside query counting only specific addresses."
+  },
   "methodology_notes": [
     "CEX first candles show H/L ratio > 13x - flagged as TGE candles",
-    "DEX trading started at 03:35 UTC on Uniswap-v3",
+    "DEX trading started at 03:35 UTC on Uniswap-v3 - 25 min BEFORE first CEX (Bitget)",
+    "First DEX price: $5.11, dropped to ~$4.00 in first 10 minutes",
     "Prices stabilized quickly due to pre-launch airdrop enabling price discovery",
     "Benchmark price = average of first few hours DEX prices (~$3.95)",
-    "Total first day DEX volume exceeded $110M"
+    "Total first day DEX volume exceeded $110M",
+    "Flipside Ethereum DEX swaps used for minute-level price discovery",
+    "Vesting VERIFIED: 12-month cliff, then 4% monthly (Tokenomist.ai Dec 2025)",
+    "Stakedrops: 100% TGE confirmed (Tokenomist.ai)"
   ],
   "sources": [
     "Flipside (Ethereum DEX)",
     "CCXT (Bitget, Bybit, Binance)",
     "CoinGecko (metadata)",
+    "CoinMarketCap (holders)",
     "ICODrops (fundraising)",
     "ChainBroker (fundraising)",
-    "Crypto-Fundraising.info (fundraising)"
+    "Crypto-Fundraising.info (fundraising)",
+    "DropsTab (vesting verification)",
+    "Tokenomist (vesting cross-check)"
   ],
-  "last_updated": "2025-12-02T10:00:00+00:00"
+  "last_updated": "2025-12-02T23:45:00+00:00"
 }

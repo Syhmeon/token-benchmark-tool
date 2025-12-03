@@ -146,7 +146,7 @@
     },
     "total_swaps": 19786
   },
-  "total_raised": 12100000,
+  "total_raised": 62100000,
   "fundraising_rounds": [
     {
       "name": "Seed",
@@ -154,10 +154,10 @@
       "amount": 2100000,
       "valuation": null,
       "lead_investors": [
-        "Multicoin Capital"
+        "Alameda Research"
       ],
       "token_price": null,
-      "source": "CryptoRank"
+      "source": "ICODrops"
     },
     {
       "name": "Series A",
@@ -169,67 +169,119 @@
         "Framework Ventures"
       ],
       "token_price": null,
+      "source": "CoinCarp"
+    },
+    {
+      "name": "Strategic",
+      "date": "2025-10",
+      "amount": 50000000,
+      "valuation": null,
+      "lead_investors": [
+        "a16z"
+      ],
+      "token_price": null,
       "source": "CryptoRank"
     }
   ],
-  "fdv_to_raised_ratio": 168.2,
+  "fdv_to_raised_ratio": 32.8,
   "investors": [
+    "a16z",
     "Multicoin Capital",
     "Framework Ventures",
     "Solana Ventures",
     "Alameda Research",
     "Jump Crypto",
     "Sino Global Capital",
-    "Delphi Digital"
+    "Delphi Digital",
+    "Robot Ventures"
   ],
   "allocations": [
-    {
-      "bucket": "Airdrop",
-      "percentage": 10.0,
-      "tokens": 100000000,
-      "vesting": "TGE 100%",
-      "tge_unlock_pct": 100.0
-    },
-    {
-      "bucket": "Community Growth",
-      "percentage": 24.3,
-      "tokens": 243000000,
-      "vesting": "Gradual distribution over 4 years",
-      "tge_unlock_pct": 0.0
-    },
-    {
-      "bucket": "Ecosystem Development",
-      "percentage": 25.0,
-      "tokens": 250000000,
-      "vesting": "Gradual distribution for protocol development",
-      "tge_unlock_pct": 1.5
-    },
     {
       "bucket": "Core Contributors",
       "percentage": 24.5,
       "tokens": 245000000,
-      "vesting": "3 years, 1 year cliff, monthly thereafter",
-      "tge_unlock_pct": 0.0
+      "vesting": "24-month cliff, then 24 months linear",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 24,
+      "vesting_months": 48
     },
     {
       "bucket": "Investors",
       "percentage": 16.2,
       "tokens": 162000000,
-      "vesting": "3 years, 1 year cliff, monthly thereafter",
-      "tge_unlock_pct": 0.0
+      "vesting": "24-month cliff, then 24 months linear",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 24,
+      "vesting_months": 48
+    },
+    {
+      "bucket": "Airdrop",
+      "percentage": 10.0,
+      "tokens": 100000000,
+      "vesting": "TGE 90%, then 10% linear over 12 months",
+      "tge_unlock_pct": 90.0,
+      "cliff_months": 0,
+      "vesting_months": 12
+    },
+    {
+      "bucket": "Community / Rewards",
+      "percentage": 24.3,
+      "tokens": 243000000,
+      "vesting": "Linear distribution over 48 months",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 0,
+      "vesting_months": 48
+    },
+    {
+      "bucket": "Ecosystem / R&D",
+      "percentage": 25.0,
+      "tokens": 250000000,
+      "vesting": "TGE 0.07%, then linear over 48 months",
+      "tge_unlock_pct": 0.07,
+      "cliff_months": 0,
+      "vesting_months": 48
     }
   ],
+  "holders": {
+    "total_holders": 80090,
+    "top_10_pct": 47.2,
+    "top_50_pct": 58.5,
+    "top_100_pct": 63.8,
+    "top_holders": [
+      {"rank": 1, "pct": 22.07, "label": "DAO Treasury"},
+      {"rank": 2, "pct": 7.03, "label": "Ecosystem Fund"},
+      {"rank": 3, "pct": 3.00, "label": "Unknown"},
+      {"rank": 4, "pct": 2.35, "label": "Unknown"},
+      {"rank": 5, "pct": 2.00, "label": "Unknown"},
+      {"rank": 6, "pct": 2.00, "label": "Unknown"},
+      {"rank": 7, "pct": 2.00, "label": "Unknown"},
+      {"rank": 8, "pct": 2.00, "label": "Unknown"},
+      {"rank": 9, "pct": 1.98, "label": "Unknown"},
+      {"rank": 10, "pct": 1.90, "label": "Unknown"}
+    ],
+    "source": "CoinMarketCap",
+    "snapshot_date": "2025-12-02",
+    "notes": "Total holders from CMC (80,090). Previous value (185,000) was from Flipside which may count differently. Top holder % from Flipside on-chain analysis."
+  },
   "methodology_notes": [
     "CEX first candles show H/L ratio > 30x - flagged as TGE candles",
     "Bybit shows impossible wicks ($32) vs ATH ($5.91) - marked SUSPECT",
     "DEX stabilization at +2h when 6 protocols converge within 0.41% spread",
-    "Benchmark price = volume-weighted average of DEX prices at stabilization"
+    "Benchmark price = volume-weighted average of DEX prices at stabilization",
+    "Fundraising cross-referenced: ICODrops ($64.2M), CryptoRank ($60M), CoinCarp ($62.1M)",
+    "Strategic round ($50M a16z) post-TGE (Oct 2025); Pre-TGE raised: $12.1M",
+    "Vesting VERIFIED: Core Contributors & Investors have 24-month cliff, then 24-month linear (Tokenomist.ai Dec 2025)",
+    "Airdrop: 90% TGE confirmed, remaining 10% over 12 months (Tokenomist.ai)"
   ],
   "sources": [
     "CCXT (Bybit, Binance)",
     "Flipside (Solana DEX)",
     "CoinGecko (metadata)",
-    "CryptoRank (fundraising)"
+    "CryptoRank (fundraising, vesting)",
+    "ICODrops (fundraising)",
+    "CoinCarp (fundraising)",
+    "DropsTab (vesting verification)",
+    "Tokenomist (vesting cross-check)"
   ],
-  "last_updated": "2025-12-01T08:45:38.819501+00:00"
+  "last_updated": "2025-12-02T23:45:00+00:00"
 }

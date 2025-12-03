@@ -1,0 +1,113 @@
+{
+  "symbol": "PAL",
+  "name": "Paladin",
+  "coingecko_id": "paladin",
+  "blockchain": "Ethereum",
+  "categories": [
+    "DeFi",
+    "Governance",
+    "Lending/Borrowing"
+  ],
+  "listing_date": "2022-03-25",
+  "description": "Paladin is a decentralized, non-custodial governance lending protocol where users can loan the voting power in their governance tokens or borrow governance tokens. Develops solutions for efficient management, borrowing, and depositing of governance tokens across DeFi.",
+  "total_supply": 50000000,
+  "max_supply": 50000000,
+  "tge_circulating_pct": 15.9,
+  "tge_circulating_tokens": 7950000,
+  "current_circulating_tokens": 45380000,
+  "benchmark_price": 1.21,
+  "benchmark_method": "tge_listing_price",
+  "benchmark_confidence": "HIGH",
+  "fdv_usd": 60500000,
+  "mcap_usd": 9619500,
+  "cex_data": [],
+  "dex_stabilization": null,
+  "total_raised": 2550000,
+  "fundraising_rounds": [
+    {
+      "name": "Seed",
+      "date": "2021-09",
+      "amount": 2550000,
+      "valuation": null,
+      "lead_investors": ["Greenfield Capital"],
+      "token_price": 0.3207,
+      "source": "ICODrops"
+    }
+  ],
+  "fdv_to_raised_ratio": 23.7,
+  "investors": [
+    "Greenfield Capital",
+    "Galaxy Digital",
+    "Semantic Ventures",
+    "NFX"
+  ],
+  "allocations": [
+    {
+      "bucket": "DAO Treasury",
+      "percentage": 43.35,
+      "tokens": 21675000,
+      "vesting": "DAO controlled",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 0,
+      "vesting_months": 0
+    },
+    {
+      "bucket": "Community Stakeholders",
+      "percentage": 42.32,
+      "tokens": 21160000,
+      "vesting": "Community distribution",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 0,
+      "vesting_months": 0
+    },
+    {
+      "bucket": "Mithras Labs Contributors (Team)",
+      "percentage": 11.5,
+      "tokens": 5750000,
+      "vesting": "Team allocation",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 0,
+      "vesting_months": 0
+    },
+    {
+      "bucket": "Protocol Owned Liquidity (PoL)",
+      "percentage": 2.83,
+      "tokens": 1415000,
+      "vesting": "Initial DEX liquidity",
+      "tge_unlock_pct": 100.0,
+      "cliff_months": 0,
+      "vesting_months": 0
+    }
+  ],
+  "holders": {
+    "total_holders": 1830,
+    "top_10_pct": null,
+    "top_50_pct": null,
+    "top_100_pct": null,
+    "top_holders": [],
+    "source": "CoinMarketCap",
+    "snapshot_date": "2025-12-03",
+    "notes": "1,830 holders from CMC. Token has low trading volume currently."
+  },
+  "methodology_notes": [
+    "TGE: March 25, 2022 at $1.21 (ICODrops verified)",
+    "Seed round: September 2021 at $0.3207 per token",
+    "7.95M PAL sold in seed (15.9% of supply)",
+    "Allocation: 43.35% Treasury, 42.32% Community, 11.5% Team (Mithras Labs), 2.83% PoL",
+    "FDV at TGE: $60.5M ($1.21 x 50M)",
+    "FDV/Raised ratio: 23.7x",
+    "ATH: $1.41 on March 25, 2022 (same day as TGE)",
+    "Current price ~$0.035 = -97% from ATH",
+    "Token also deployed on Sonic chain (cross-chain)",
+    "Three-tier tokenomics: PAL (base), hPAL (staked), Locked hPAL (governance)"
+  ],
+  "sources": [
+    "ICODrops (TGE date, price, fundraising)",
+    "CoinMarketCap (holders, current price, supply)",
+    "CryptoRank (supply, ATH data)",
+    "Crypto-Fundraising.info (investors)",
+    "DropsTab (fundraising verification)",
+    "Paladin docs (allocation breakdown)"
+  ],
+  "last_updated": "2025-12-03T10:30:00+00:00"
+}
