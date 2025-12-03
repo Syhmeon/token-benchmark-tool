@@ -319,11 +319,180 @@ else:
 
 st.markdown("---")
 
+# 2.6 Price Discovery Chart (Combined CEX/DEX)
+st.subheader("Price Discovery - All Sources")
+
+price_chart_data = []
+colors = []
+
+# Add CEX OPEN prices
+for cex in token.cex_data:
+    price_chart_data.append({
+        "Source": f"{cex.exchange.upper()} Open",
+        "Price": cex.open,
+        "Type": "CEX Open"
+    })
+    colors.append("#EF553B")  # Red for CEX Open
+
+    if cex.vwap_1h:
+        price_chart_data.append({
+            "Source": f"{cex.exchange.upper()} VWAP",
+            "Price": cex.vwap_1h,
+            "Type": "CEX VWAP"
+        })
+        colors.append("#636EFA")  # Blue for VWAP
+
+# Add DEX prices
+if token.dex_stabilization:
+    for dex_name, price in token.dex_stabilization.dex_prices.items():
+        price_chart_data.append({
+            "Source": dex_name.replace("_", " ").title(),
+            "Price": price,
+            "Type": "DEX Stabilized"
+        })
+        colors.append("#00CC96")  # Green for DEX
+
+    # Add benchmark
+    price_chart_data.append({
+        "Source": "BENCHMARK",
+        "Price": token.benchmark_price,
+        "Type": "Benchmark"
+    })
+    colors.append("#AB63FA")  # Purple for benchmark
+
+if price_chart_data:
+    price_df = pd.DataFrame(price_chart_data)
+
+    fig_prices = go.Figure()
+
+    # Color mapping
+    color_map = {
+        "CEX Open": "#EF553B",
+        "CEX VWAP": "#636EFA",
+        "DEX Stabilized": "#00CC96",
+        "Benchmark": "#AB63FA"
+    }
+
+    for price_type in ["CEX Open", "CEX VWAP", "DEX Stabilized", "Benchmark"]:
+        df_type = price_df[price_df["Type"] == price_type]
+        if not df_type.empty:
+            fig_prices.add_trace(go.Bar(
+                x=df_type["Source"],
+                y=df_type["Price"],
+                name=price_type,
+                marker_color=color_map[price_type],
+                text=[f"${p:.4f}" for p in df_type["Price"]],
+                textposition="outside"
+            ))
+
+    # Add benchmark line
+    fig_prices.add_hline(
+        y=token.benchmark_price,
+        line_dash="dash",
+        line_color="#AB63FA",
+        annotation_text=f"Benchmark: ${token.benchmark_price:.4f}"
+    )
+
+    fig_prices.update_layout(
+        title=f"{token.name} ({token.symbol}) - Price Discovery at TGE",
+        xaxis_title="Source",
+        yaxis_title="Price (USD)",
+        height=450,
+        showlegend=True,
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+    )
+
+    st.plotly_chart(fig_prices, use_container_width=True)
+
+st.markdown("---")
+
 # ============================================================================
-# SECTION 3: BENCHMARK SUMMARY
+# SECTION 3: TOKEN ALLOCATIONS
 # ============================================================================
 
-st.header("3. BENCHMARK SUMMARY")
+st.header("3. TOKEN ALLOCATIONS")
+
+if token.allocations:
+    col_alloc1, col_alloc2 = st.columns(2)
+
+    with col_alloc1:
+        # Pie chart
+        alloc_labels = [a.bucket for a in token.allocations]
+        alloc_values = [a.percentage for a in token.allocations]
+
+        fig_pie = go.Figure(data=[go.Pie(
+            labels=alloc_labels,
+            values=alloc_values,
+            hole=0.3,
+            textinfo='label+percent',
+            textposition='outside'
+        )])
+        fig_pie.update_layout(
+            title="Token Distribution",
+            height=400,
+            showlegend=False
+        )
+        st.plotly_chart(fig_pie, use_container_width=True)
+
+    with col_alloc2:
+        # TGE Unlock bar chart
+        alloc_tge_data = []
+        for a in token.allocations:
+            alloc_tge_data.append({
+                "Bucket": a.bucket,
+                "Unlocked at TGE": a.tge_unlock_pct,
+                "Locked/Vesting": 100 - a.tge_unlock_pct
+            })
+
+        alloc_tge_df = pd.DataFrame(alloc_tge_data)
+
+        fig_tge = go.Figure()
+        fig_tge.add_trace(go.Bar(
+            x=alloc_tge_df["Bucket"],
+            y=alloc_tge_df["Unlocked at TGE"],
+            name="Unlocked at TGE",
+            marker_color="#00CC96"
+        ))
+        fig_tge.add_trace(go.Bar(
+            x=alloc_tge_df["Bucket"],
+            y=alloc_tge_df["Locked/Vesting"],
+            name="Locked/Vesting",
+            marker_color="#EF553B"
+        ))
+        fig_tge.update_layout(
+            title="TGE Unlock vs Locked",
+            barmode="stack",
+            xaxis_title="",
+            yaxis_title="Percentage",
+            height=400,
+            legend=dict(orientation="h", yanchor="bottom", y=1.02)
+        )
+        st.plotly_chart(fig_tge, use_container_width=True)
+
+    # Allocation table
+    st.subheader("Allocation Details")
+    alloc_table = []
+    for a in token.allocations:
+        alloc_table.append({
+            "Bucket": a.bucket,
+            "Percentage": f"{a.percentage}%",
+            "Tokens": f"{a.tokens:,}",
+            "TGE Unlock": f"{a.tge_unlock_pct}%",
+            "Vesting": a.vesting
+        })
+
+    alloc_df = pd.DataFrame(alloc_table)
+    st.dataframe(alloc_df, use_container_width=True, hide_index=True)
+else:
+    st.info("No allocation data available")
+
+st.markdown("---")
+
+# ============================================================================
+# SECTION 4: BENCHMARK SUMMARY
+# ============================================================================
+
+st.header("4. BENCHMARK SUMMARY")
 
 # 3.1 Sources Comparison Table
 st.subheader("Sources Comparison")
