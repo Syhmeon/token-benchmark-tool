@@ -1,0 +1,176 @@
+{
+  "symbol": "2Z",
+  "name": "DoubleZero",
+  "coingecko_id": "doublezero",
+  "blockchain": "Solana",
+  "categories": [
+    "Infrastructure",
+    "Network",
+    "DePIN"
+  ],
+  "listing_date": "2025-10-02",
+  "description": "DoubleZero is a protocol-agnostic network infrastructure layer for blockchains, providing high-speed, low-latency connectivity for validators and nodes.",
+  "total_supply": 10000000000,
+  "max_supply": 10000000000,
+  "tge_circulating_pct": 34.7,
+  "tge_circulating_tokens": 3470000000,
+  "current_circulating_tokens": 3471417500,
+  "benchmark_price": 0.73,
+  "benchmark_method": "dex_stabilization",
+  "benchmark_confidence": "HIGH",
+  "fdv_usd": 7300000000,
+  "mcap_usd": 2533100000,
+  "cex_data": [],
+  "dex_stabilization": {
+    "stabilization_hour": "2025-10-02T12:10:00",
+    "reference_price": 0.73,
+    "spread_pct": 2.5,
+    "confidence": "HIGH",
+    "dex_prices": {
+      "raydium_clmm": 0.735,
+      "meteora_dlmm": 0.732
+    },
+    "first_dex": "raydium_clmm",
+    "first_dex_time": "2025-10-02 12:00:00 UTC",
+    "first_candles_1m": [
+      {"minute": 1, "time": "12:00:00", "open": 0.673, "high": 0.673, "low": 0.673, "close": 0.673},
+      {"minute": 2, "time": "12:01:00", "open": 0.715, "high": 0.715, "low": 0.715, "close": 0.715},
+      {"minute": 3, "time": "12:02:00", "open": 0.707, "high": 0.707, "low": 0.707, "close": 0.707},
+      {"minute": 4, "time": "12:03:00", "open": 0.702, "high": 0.702, "low": 0.702, "close": 0.702},
+      {"minute": 5, "time": "12:04:00", "open": 0.735, "high": 0.735, "low": 0.735, "close": 0.735},
+      {"minute": 6, "time": "12:05:00", "open": 0.816, "high": 0.816, "low": 0.816, "close": 0.816},
+      {"minute": 7, "time": "12:06:00", "open": 0.789, "high": 0.789, "low": 0.789, "close": 0.789},
+      {"minute": 8, "time": "12:07:00", "open": 0.766, "high": 0.766, "low": 0.766, "close": 0.766},
+      {"minute": 9, "time": "12:08:00", "open": 0.754, "high": 0.754, "low": 0.754, "close": 0.754},
+      {"minute": 10, "time": "12:09:00", "open": 0.746, "high": 0.746, "low": 0.746, "close": 0.746}
+    ],
+    "total_swaps": 32456
+  },
+  "total_raised": 39250000,
+  "fundraising_rounds": [
+    {
+      "name": "Private Sale",
+      "date": "2025-04",
+      "amount": 28000000,
+      "valuation": 400000000,
+      "lead_investors": ["Multicoin Capital", "Dragonfly Capital"],
+      "token_price": null,
+      "source": "CryptoRank"
+    },
+    {
+      "name": "Public Sale (IDO)",
+      "date": "2025-04",
+      "amount": 11250000,
+      "valuation": null,
+      "lead_investors": [],
+      "token_price": 0.075,
+      "source": "ICODrops"
+    }
+  ],
+  "fdv_to_raised_ratio": 186.0,
+  "investors": [
+    "Multicoin Capital",
+    "Dragonfly Capital",
+    "Jump Crypto",
+    "Foundation Capital",
+    "Reciprocal Ventures",
+    "Ubik Capital",
+    "Borderless Capital",
+    "DBA",
+    "Frictionless",
+    "Superscrypt"
+  ],
+  "allocations": [
+    {
+      "bucket": "Backers",
+      "percentage": 42.0,
+      "tokens": 4200000000,
+      "vesting": "12-month cliff, then linear 36 months",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 12,
+      "vesting_months": 48
+    },
+    {
+      "bucket": "Foundation / Ecosystem",
+      "percentage": 29.0,
+      "tokens": 2900000000,
+      "vesting": "Unlocked at TGE, gradual release",
+      "tge_unlock_pct": 100.0,
+      "cliff_months": 0,
+      "vesting_months": 0
+    },
+    {
+      "bucket": "Institutions (Jump Crypto)",
+      "percentage": 28.0,
+      "tokens": 2800000000,
+      "vesting": "5% unlocked, rest linear 48 months",
+      "tge_unlock_pct": 5.0,
+      "cliff_months": 0,
+      "vesting_months": 48
+    },
+    {
+      "bucket": "Malbec Labs (Team)",
+      "percentage": 14.0,
+      "tokens": 1400000000,
+      "vesting": "12-month cliff, then linear 36 months",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 12,
+      "vesting_months": 48
+    },
+    {
+      "bucket": "Contributors",
+      "percentage": 4.0,
+      "tokens": 400000000,
+      "vesting": "Linear over 48 months",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 0,
+      "vesting_months": 48
+    },
+    {
+      "bucket": "Validators / Builders",
+      "percentage": 3.0,
+      "tokens": 300000000,
+      "vesting": "Performance-based distribution",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 0,
+      "vesting_months": 48
+    }
+  ],
+  "holders": {
+    "total_holders": null,
+    "top_10_pct": null,
+    "top_50_pct": null,
+    "top_100_pct": null,
+    "top_holders": [],
+    "source": "Solscan",
+    "snapshot_date": "2025-12-03",
+    "notes": "Holder count not available from CMC. Check Solscan for SPL token holder data. Contract: J6pQQ3FAcJQeWPPGppWRb4nM8jU3wLyYbRrLh7feMfvd"
+  },
+  "methodology_notes": [
+    "TGE: October 2, 2025 at 12:00:00 UTC on Raydium CLMM",
+    "DEX first candle: $0.673 avg, stabilized at $0.73 within 10 min",
+    "First hour volume: $16.9M across 32,456 swaps (Flipside verified)",
+    "Price peaked at $1.63 (minute 41) then corrected to ~$1.19",
+    "ICODrops listing price ($0.74) confirmed by DEX data",
+    "Public sale (IDO): April 15-22, 2025 at $0.075 per token",
+    "Private sale: $28M at $400M valuation (Multicoin & Dragonfly led)",
+    "SEC No-Action Letter granted September 29, 2025",
+    "71% of supply locked at TGE, 29% circulating",
+    "Jump Crypto: 28% allocation with 5% unlocked",
+    "Malbec Labs (Team): 14% with 12-month cliff",
+    "Standard Lockup: linear release over 48 months",
+    "Full unlock expected Q2 2028",
+    "FDV at TGE: $7.3B ($0.73 x 10B)",
+    "FDV/Raised ratio: 186x (very high)",
+    "Allocation percentages from CryptoRank may overlap (Institutions includes Jump)"
+  ],
+  "sources": [
+    "Flipside Crypto (Solana DEX swaps - minute-level price discovery)",
+    "ICODrops (TGE date, listing price, public sale)",
+    "CryptoRank (fundraising, allocation breakdown, vesting)",
+    "CoinMarketCap (current price, circulating supply)",
+    "DropsTab (vesting verification)",
+    "Solscan (token contract verification)"
+  ],
+  "last_updated": "2025-12-03T11:00:00+00:00"
+}

@@ -1,0 +1,185 @@
+{
+  "symbol": "LAYER",
+  "name": "Solayer",
+  "coingecko_id": "solayer",
+  "blockchain": "Solana",
+  "categories": [
+    "Restaking",
+    "Infrastructure",
+    "DeFi"
+  ],
+  "listing_date": "2025-02-11",
+  "description": "Solayer is a restaking network natively on Solana, leveraging Solana's economic security and premium execution to provide decentralized cloud infrastructure.",
+  "total_supply": 1000000000,
+  "max_supply": 1000000000,
+  "tge_circulating_pct": 22.0,
+  "tge_circulating_tokens": 220000000,
+  "current_circulating_tokens": 312514066,
+  "benchmark_price": 1.05,
+  "benchmark_method": "dex_stabilization",
+  "benchmark_confidence": "HIGH",
+  "fdv_usd": 1050000000,
+  "mcap_usd": 231000000,
+  "cex_data": [],
+  "dex_stabilization": {
+    "stabilization_hour": "2025-02-11T13:15:00",
+    "reference_price": 1.05,
+    "spread_pct": 3.5,
+    "confidence": "HIGH",
+    "dex_prices": {
+      "raydium_clmm": 1.05,
+      "meteora_dlmm": 1.04
+    },
+    "first_dex": "raydium_clmm",
+    "first_dex_time": "2025-02-11 12:46:00 UTC",
+    "first_candles_1m": [
+      {"minute": 1, "time": "12:46:00", "open": 1.576, "high": 1.576, "low": 1.576, "close": 1.576},
+      {"minute": 2, "time": "12:47:00", "open": 1.463, "high": 1.463, "low": 1.463, "close": 1.463},
+      {"minute": 3, "time": "12:48:00", "open": 1.386, "high": 1.386, "low": 1.386, "close": 1.386},
+      {"minute": 4, "time": "12:49:00", "open": 1.378, "high": 1.378, "low": 1.378, "close": 1.378},
+      {"minute": 5, "time": "12:50:00", "open": 1.342, "high": 1.342, "low": 1.342, "close": 1.342},
+      {"minute": 6, "time": "12:51:00", "open": 1.315, "high": 1.315, "low": 1.315, "close": 1.315},
+      {"minute": 7, "time": "12:52:00", "open": 1.321, "high": 1.321, "low": 1.321, "close": 1.321},
+      {"minute": 8, "time": "12:53:00", "open": 1.342, "high": 1.342, "low": 1.342, "close": 1.342},
+      {"minute": 9, "time": "12:54:00", "open": 1.328, "high": 1.328, "low": 1.328, "close": 1.328},
+      {"minute": 10, "time": "12:55:00", "open": 1.264, "high": 1.264, "low": 1.264, "close": 1.264}
+    ],
+    "total_swaps": 15000
+  },
+  "total_raised": 22500000,
+  "fundraising_rounds": [
+    {
+      "name": "Seed",
+      "date": "2024-08",
+      "amount": 12000000,
+      "valuation": 80000000,
+      "lead_investors": ["Polychain Capital", "Hack VC"],
+      "token_price": null,
+      "source": "TheBlock"
+    },
+    {
+      "name": "Public Sale (IDO)",
+      "date": "2025-01",
+      "amount": 10500000,
+      "valuation": null,
+      "lead_investors": [],
+      "token_price": 0.35,
+      "source": "ICODrops"
+    }
+  ],
+  "fdv_to_raised_ratio": 46.7,
+  "investors": [
+    "Polychain Capital",
+    "Hack VC",
+    "Binance Labs",
+    "Big Brain Holdings",
+    "Nomad Capital",
+    "Race Capital",
+    "ABCDE",
+    "Maelstrom (Arthur Hayes)"
+  ],
+  "allocations": [
+    {
+      "bucket": "R&D & Ecosystem Growth",
+      "percentage": 34.2,
+      "tokens": 342000000,
+      "vesting": "Quarterly over 4 years",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 0,
+      "vesting_months": 48
+    },
+    {
+      "bucket": "Core Contributors (Team)",
+      "percentage": 17.1,
+      "tokens": 171000000,
+      "vesting": "1-year cliff, 3 years linear",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 12,
+      "vesting_months": 48
+    },
+    {
+      "bucket": "Investors",
+      "percentage": 16.7,
+      "tokens": 167000000,
+      "vesting": "1-year cliff, 2 years linear",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 12,
+      "vesting_months": 36
+    },
+    {
+      "bucket": "Foundation",
+      "percentage": 15.0,
+      "tokens": 150000000,
+      "vesting": "Quarterly over 4 years",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 0,
+      "vesting_months": 48
+    },
+    {
+      "bucket": "Community Incentives",
+      "percentage": 14.0,
+      "tokens": 140000000,
+      "vesting": "Linear over 6 months",
+      "tge_unlock_pct": 0.0,
+      "cliff_months": 0,
+      "vesting_months": 6
+    },
+    {
+      "bucket": "Genesis Airdrop",
+      "percentage": 3.0,
+      "tokens": 30000000,
+      "vesting": "100% at TGE",
+      "tge_unlock_pct": 100.0,
+      "cliff_months": 0,
+      "vesting_months": 0
+    },
+    {
+      "bucket": "Emerald Card Community Sale",
+      "percentage": 3.0,
+      "tokens": 30000000,
+      "vesting": "100% at TGE",
+      "tge_unlock_pct": 100.0,
+      "cliff_months": 0,
+      "vesting_months": 0
+    }
+  ],
+  "holders": {
+    "total_holders": null,
+    "top_10_pct": 77.0,
+    "top_50_pct": null,
+    "top_100_pct": null,
+    "top_holders": [
+      {"rank": 1, "pct": 20.23, "label": "Unknown (37xTHA...)"},
+      {"rank": 2, "pct": 16.66, "label": "Investors"},
+      {"rank": 3, "pct": 15.0, "label": "Foundation"},
+      {"rank": 4, "pct": 15.0, "label": "Foundation"},
+      {"rank": 5, "pct": 10.5, "label": "Unknown"}
+    ],
+    "source": "CoinMarketCap",
+    "snapshot_date": "2025-03-26",
+    "notes": "Top wallet held 20.23% (202.3M LAYER) as of March 2025. Contract: LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc"
+  },
+  "methodology_notes": [
+    "TGE: February 11, 2025 at 12:46:00 UTC (first DEX trade)",
+    "DEX first candle: $1.58 avg, dropped to ~$1.05 within 30 min",
+    "ICO price ($0.35) vs DEX launch (~$1.58) = 4.5x instant gain",
+    "Stabilization price ~$1.00-1.05 after first hour",
+    "Seed round: $12M at $80M valuation (Polychain led) - Aug 2024",
+    "IDO: $10.5M at $0.35 per token - Jan 2025",
+    "Total raised: $22.5M",
+    "Genesis Airdrop + Emerald Card = 6% fully unlocked at TGE",
+    "Team/Investors have 1-year cliff",
+    "ATH: $3.42 on May 5, 2025",
+    "Currently ~$0.19 (-94% from ATH)",
+    "31.5% unlocked, 68.5% locked as of Dec 2025"
+  ],
+  "sources": [
+    "Flipside Crypto (Solana DEX swaps - minute-level price discovery)",
+    "ICODrops (TGE date, IDO price)",
+    "CryptoRank (allocation, vesting schedule)",
+    "DropsTab (vesting verification)",
+    "TheBlock (Seed round details)",
+    "CoinMarketCap (current price, holders, circulating supply)"
+  ],
+  "last_updated": "2025-12-03T12:00:00+00:00"
+}

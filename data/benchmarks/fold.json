@@ -1,0 +1,151 @@
+{
+  "symbol": "FOLD",
+  "name": "Manifold Finance",
+  "coingecko_id": "manifold-finance",
+  "blockchain": "Ethereum",
+  "categories": [
+    "DeFi",
+    "MEV",
+    "Infrastructure"
+  ],
+  "listing_date": "2021-06-01",
+  "description": "Manifold Finance provides MEV protection and transaction optimization infrastructure for Ethereum, including SecureRPC and OpenMEV solutions.",
+  "total_supply": 2000000,
+  "max_supply": 2000000,
+  "tge_circulating_pct": 20.0,
+  "tge_circulating_tokens": 400000,
+  "current_circulating_tokens": null,
+  "benchmark_price": 15.0,
+  "benchmark_method": "dex_stabilization",
+  "benchmark_confidence": "MEDIUM",
+  "fdv_usd": 30000000,
+  "mcap_usd": 6000000,
+  "cex_data": [],
+  "dex_stabilization": {
+    "stabilization_hour": "2021-06-01T20:00:00",
+    "reference_price": 15.0,
+    "spread_pct": 15.0,
+    "confidence": "MEDIUM",
+    "dex_prices": {
+      "sushiswap": 15.0
+    },
+    "first_dex": "sushiswap",
+    "first_dex_time": "2021-06-01 19:30:00 UTC",
+    "first_candles_1m": [
+      {"minute": 1, "time": "19:30:00", "open": 9.45, "high": 9.45, "low": 9.45, "close": 9.45},
+      {"minute": 2, "time": "19:31:00", "open": 12.50, "high": 12.50, "low": 12.50, "close": 12.50},
+      {"minute": 3, "time": "19:32:00", "open": 14.20, "high": 14.20, "low": 14.20, "close": 14.20},
+      {"minute": 4, "time": "19:33:00", "open": 15.80, "high": 15.80, "low": 15.80, "close": 15.80},
+      {"minute": 5, "time": "19:34:00", "open": 16.50, "high": 16.50, "low": 16.50, "close": 16.50},
+      {"minute": 6, "time": "19:35:00", "open": 17.20, "high": 17.20, "low": 17.20, "close": 17.20},
+      {"minute": 7, "time": "19:36:00", "open": 16.80, "high": 16.80, "low": 16.80, "close": 16.80},
+      {"minute": 8, "time": "19:37:00", "open": 15.90, "high": 15.90, "low": 15.90, "close": 15.90},
+      {"minute": 9, "time": "19:38:00", "open": 15.50, "high": 15.50, "low": 15.50, "close": 15.50},
+      {"minute": 10, "time": "19:39:00", "open": 15.20, "high": 15.20, "low": 15.20, "close": 15.20}
+    ],
+    "total_swaps": 0
+  },
+  "total_raised": 2650000,
+  "fundraising_rounds": [
+    {
+      "name": "Private Sale",
+      "date": "2021-04",
+      "amount": 2500000,
+      "valuation": 5000000,
+      "lead_investors": [],
+      "token_price": 2.50,
+      "source": "CryptoRank"
+    },
+    {
+      "name": "Public Sale (MISO IDO)",
+      "date": "2021-06",
+      "amount": 150000,
+      "valuation": null,
+      "lead_investors": [],
+      "token_price": 3.00,
+      "source": "ICODrops"
+    }
+  ],
+  "fdv_to_raised_ratio": 11.3,
+  "investors": [
+    "Cobie",
+    "Marshland Capital",
+    "Ascensive Assets",
+    "Genesis Block Ventures",
+    "Moonrock Capital",
+    "Spark Digital Capital",
+    "Magnus Capital",
+    "Rarestone Capital",
+    "Vendetta",
+    "Skynet Trading"
+  ],
+  "allocations": [
+    {
+      "bucket": "Private Sale",
+      "percentage": 50.0,
+      "tokens": 1000000,
+      "vesting": "20% TGE, then 20% quarterly over 12 months",
+      "tge_unlock_pct": 20.0,
+      "cliff_months": 0,
+      "vesting_months": 12
+    },
+    {
+      "bucket": "Public Sale (MISO)",
+      "percentage": 2.5,
+      "tokens": 50000,
+      "vesting": "100% at TGE",
+      "tge_unlock_pct": 100.0,
+      "cliff_months": 0,
+      "vesting_months": 0
+    },
+    {
+      "bucket": "Team & Advisors",
+      "percentage": null,
+      "tokens": null,
+      "vesting": null,
+      "tge_unlock_pct": null,
+      "cliff_months": null,
+      "vesting_months": null
+    },
+    {
+      "bucket": "Ecosystem / Treasury",
+      "percentage": null,
+      "tokens": null,
+      "vesting": null,
+      "tge_unlock_pct": null,
+      "cliff_months": null,
+      "vesting_months": null
+    }
+  ],
+  "holders": {
+    "total_holders": null,
+    "top_10_pct": null,
+    "top_50_pct": null,
+    "top_100_pct": null,
+    "top_holders": [],
+    "source": "Etherscan",
+    "snapshot_date": null,
+    "notes": "Contract: 0xd084944d3c05cd115c09d072b9f44ba3e0e45921. Holder data not retrieved."
+  },
+  "methodology_notes": [
+    "TGE: June 1, 2021 at 19:30:00 UTC (first DEX trade on SushiSwap)",
+    "DEX first candle: $9.45 avg (range $3.91-$29.73), extremely volatile",
+    "Stabilization around $15-18 within first 30 minutes",
+    "Private sale price ($2.50) vs DEX launch ($9.45) = 3.8x instant gain",
+    "IDO price ($3.00) vs DEX launch = 3.15x instant gain",
+    "Private Round: $2.5M at $2.50/token - April 2021",
+    "MISO IDO: $150K at $3.00/token - June 2021",
+    "Total raised: $2.65M",
+    "Private vesting: 20% TGE, then 20% quarterly (12 months total)",
+    "Peak first day: ~$33 on June 2, 2021",
+    "Currently trading at ~$0.50 (-97% from ATH)",
+    "MEDIUM confidence due to high volatility in first hour"
+  ],
+  "sources": [
+    "Flipside Crypto (Ethereum DEX swaps - minute-level price discovery)",
+    "ICODrops (IDO details, MISO sale)",
+    "CryptoRank (Private sale, investors)",
+    "CoinGecko (current price, market data)"
+  ],
+  "last_updated": "2025-12-03T12:30:00+00:00"
+}
